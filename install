@@ -16,7 +16,12 @@ if [ "$1" == "-r" -a -e $install_path ]; then
     echo "Removing potato from $install_path"
     rm $install_path
 elif [ -e $install_path ]; then
-    echo "Potato is already installed at $install_path"
+    if [ "$1" == "-f" ]; then
+        echo "Installing potato to $install_path"
+        cp $script_name $install_path
+    else
+        echo "Potato is already installed at $install_path"
+    fi
 else
     echo "Installing potato to $install_path"
     cp $script_name $install_path
