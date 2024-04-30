@@ -12,11 +12,11 @@ Typing `potato` with no arguments in your shell will display the global usage :
 > potato
 Potato laptop booster
 Commands:
-    add-ram	<size>          Increase the amount of ram by <size> Gb
+    add-ram <size>          Increase the amount of ram by <size> Gb
     enable-shell-rtx        Enable ray-traced shell
     increase-resolution     Change screen resolution to 4K
     add-cores               Increase CPU core count
-    add-cpu	<count>         Add <count> CPUs to the system
+    add-cpu <count>         Add <count> CPUs to the system
     add-gpu                 Add a GPU to the system
     increase-disk <size>    Increase disk space by <size> Tb
     optimize                Run various optimizations
