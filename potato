@@ -1,0 +1,115 @@
+#! /bin/bash
+
+function print_help () {
+	echo "Potato laptop booster"
+	echo "Commands:"
+	echo "	add-ram	<size>			Increase the amount of ram by <size> Gb"
+	echo "	enable-shell-rtx		Enable ray-traced shell"
+	echo "	increase-resolution		Change screen resolution to 4K"
+	echo "	add-cores				Increase CPU core count"
+	echo "	add-cpu	<count>			Add <count> CPUs to the system"
+	echo "	add-gpu					Add a GPU to the system"
+	echo "	increase-disk <size>	Increase disk space by <size> Tb"
+	echo "	optimize				Run various optimizations"
+}
+
+function add_ram () {
+		if [ $# -ne 2 ]; then
+			print_help
+			exit
+		fi
+		echo "Choosing best RAM file format..."
+		sleep 1
+		echo "Defaulting to .mp4 (most popular)"
+		sleep 0.5
+		echo "Downloading RAM..."
+		sleep 0.5
+		echo "Retrieving RAM providers list..."
+		sleep 1
+		echo "Choosing best provider..."
+		sleep 0.5
+		echo "Defaulting to https://freeram.ru"
+		echo "Downloading RAM.mp4..."
+		sleep 3
+		echo "Extracting..."
+		sleep 1
+		echo "Setting up RAM..."
+		sleep 1
+		echo "Creating /dev/ram0..."
+		sleep 0.5
+		echo "Linking properties..."
+		sleep 1
+		echo "Registering new kernel modules..."
+		sleep 2
+		echo "Cleaning up..."
+		sleep 0.5
+		echo -e "\nRAM successfully added !"
+		echo "+$2Gb of RAM"
+}
+
+function enable_shell_rtx () {
+		echo "Enabling ray-traced shell..."
+		sleep 1
+		echo "Downloading RTX drivers..."
+		sleep 2
+		echo "Extracting files..."
+		sleep 3
+		echo "Running pre-install scripts..."
+		sleep 2
+		echo "Installing..."
+		sleep 3
+		echo "Compiling dependencies..."
+		sleep 2
+		echo "Linking files..."
+		sleep 0.5
+		echo "Running post-install scripts..."
+		sleep 2
+		echo "Running post-post-install scripts..."
+		sleep 1
+		echo "Enabling..."
+		sleep 0.5
+		echo -e "\nRTX shell successfully enabled !"
+		echo "Note: this feature requires a dedicated GPU"
+		echo "Note: you can install one by running 'potato add-gpu'"
+}
+
+function increase_resolution () {
+	echo "Checking screen compatibility..."
+	sleep 1
+	echo "Selecting screen reference..."
+	sleep 0.5
+	echo "Getting credentials from /etc/cred..."
+	sleep 0.2
+	echo "Ordering pixels from https://amaz0n.com..."
+	sleep 3
+	echo "Resizing screen..."
+	sleep 1
+	echo "Setting up new resolution..."
+	sleep 0.5
+	echo "Adding colors..."
+	sleep 0.5
+	echo "Calibrating..."
+	sleep 2
+	echo "Removing useless pixels..."
+	sleep 1
+	echo -e "\nResolution successfully increased !"
+	echo "Note: this feature requires a lot of RAM"
+	echo "Note: you can install more by running 'potato add-ram <size>'"
+}
+
+if [ $# -eq 0 ]; then
+	print_help
+	exit
+fi
+
+case $1 in
+	"add-ram")
+		add_ram
+		;;
+	"enable-shell-rtx")
+		enable_shell_rtx
+		;;
+	"increase-resolution")
+		increase_resolution
+		;;
+esac
