@@ -14,21 +14,16 @@ function print_help () {
 }
 
 function add_ram () {
-		if [ $# -ne 2 ]; then
-			print_help
-			exit
-		fi
 		echo "Choosing best RAM file format..."
 		sleep 1
 		echo "Defaulting to .mp4 (most popular)"
-		sleep 0.5
-		echo "Downloading RAM..."
 		sleep 0.5
 		echo "Retrieving RAM providers list..."
 		sleep 1
 		echo "Choosing best provider..."
 		sleep 0.5
 		echo "Defaulting to https://freeram.ru"
+		sleep 0.2
 		echo "Downloading RAM.mp4..."
 		sleep 3
 		echo "Extracting..."
@@ -44,7 +39,7 @@ function add_ram () {
 		echo "Cleaning up..."
 		sleep 0.5
 		echo -e "\nRAM successfully added !"
-		echo "+$2Gb of RAM"
+		echo "+$1Gb of RAM"
 }
 
 function enable_shell_rtx () {
@@ -54,6 +49,12 @@ function enable_shell_rtx () {
 		sleep 2
 		echo "Extracting files..."
 		sleep 3
+		echo "Checking compatibility..."
+		sleep 1
+		echo "Computing checksum..."
+		sleep 2
+		echo "Checksum is valid"
+		sleep 0.2
 		echo "Running pre-install scripts..."
 		sleep 2
 		echo "Installing..."
@@ -66,8 +67,10 @@ function enable_shell_rtx () {
 		sleep 2
 		echo "Running post-post-install scripts..."
 		sleep 1
-		echo "Enabling..."
+		echo "Configuring external metadata..."
 		sleep 0.5
+		echo "Enabling..."
+		sleep 1
 		echo -e "\nRTX shell successfully enabled !"
 		echo "Note: this feature requires a dedicated GPU"
 		echo "Note: you can install one by running 'potato add-gpu'"
@@ -78,9 +81,9 @@ function increase_resolution () {
 	sleep 1
 	echo "Selecting screen reference..."
 	sleep 0.5
-	echo "Getting credentials from /etc/cred..."
+	echo "Calculating rasterization matrix..."
 	sleep 0.2
-	echo "Ordering pixels from https://amaz0n.com..."
+	echo "Downloading pixels from https://amaz0n.com..."
 	sleep 3
 	echo "Resizing screen..."
 	sleep 1
@@ -92,9 +95,17 @@ function increase_resolution () {
 	sleep 2
 	echo "Removing useless pixels..."
 	sleep 1
+	echo "Clearing standard output..."
+	sleep 0.5
+	echo "Deleting old resolution..."
+	sleep 1
 	echo -e "\nResolution successfully increased !"
 	echo "Note: this feature requires a lot of RAM"
 	echo "Note: you can install more by running 'potato add-ram <size>'"
+}
+
+function add_cores () {
+	exit
 }
 
 if [ $# -eq 0 ]; then
@@ -104,12 +115,19 @@ fi
 
 case $1 in
 	"add-ram")
-		add_ram
+		if [ $# -ne 2 ]; then
+			print_help
+			exit
+		fi
+		add_ram $2
 		;;
 	"enable-shell-rtx")
 		enable_shell_rtx
 		;;
 	"increase-resolution")
 		increase_resolution
+		;;
+	"add-cores")
+		add_cores
 		;;
 esac
