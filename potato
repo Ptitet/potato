@@ -105,7 +105,44 @@ function increase_resolution () {
 }
 
 function add_cores () {
-	exit
+	num_cores=$(nproc --all)
+	echo "Retrieving CPU infos..."
+	sleep 1
+	echo "CPU core count: $num_cores"
+	echo "Target core count: $((num_cores * 2))"
+	sleep 1
+	echo "Searching for new cores..."
+	sleep 0.5
+	echo "Searching in /lost+found..."
+	sleep 0.5
+	echo "Searching in /dev/null..."
+	sleep 0.5
+	echo "No new cores found"
+	sleep 1
+	echo "Defaulting to core download"
+	sleep 0.5
+	echo "Downloading cores from https://corehub.com..."
+	sleep 3
+	echo "Unpacking core archive..."
+	sleep 2
+	echo "Setting up virtual machine..."
+	sleep 1
+	echo "Installing cores..."
+	sleep 2
+	echo "Converting virtual machine to real machine..."
+	sleep 1
+	echo "Setting up space on motherboard..."
+	sleep 0.5
+	echo "Removed unused PCIe interfaces"
+	sleep 0.2
+	echo "Connecting wires..."
+	sleep 1
+	echo "Modifying BIOS configuration..."
+	sleep 3
+	echo "Initializing L1 cache..."
+	sleep 0.5
+	echo -e "\nCores successfully added !"
+	echo "+$((num_cores)) cores"
 }
 
 if [ $# -eq 0 ]; then
