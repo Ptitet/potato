@@ -20,6 +20,14 @@ This will copy potato in `/usr/local/bin/`, which should be in your PATH. If not
 
 After that, potato is ready to use ! You can now head over the [how to use](#how-to-use) section.
 
+## Force / Reinstall
+
+If you want to overwrite any existing installation of potato, simply use the `-f` force flag:
+
+```sh
+> sudo ./install -f
+```
+
 ## Uninstall
 
 To remove potato, simply delete the potato script located in `/usr/local/bin/`. The installer can handle this for you by running:
