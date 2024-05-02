@@ -13,6 +13,23 @@ function print_help () {
 	echo "	optimize				Run various optimizations"
 }
 
+function char_n () {
+	for i in $(seq 1 $1); do
+		echo -n "$2"
+	done
+}
+
+function loading () {
+	echo -n $(char_n $1 "▯")
+	for i in $(seq 1 $1); do
+		sleep 0.5
+		echo -ne "\r"
+		echo -n $(char_n $i "▮")
+		echo -n $(char_n $(($1 - $i)) "▯")
+	done
+	echo
+}
+
 function add_ram () {
 		echo "Choosing best RAM file format..."
 		sleep 1
@@ -25,7 +42,7 @@ function add_ram () {
 		echo "Defaulting to https://freeram.ru"
 		sleep 0.2
 		echo "Downloading RAM.mp4..."
-		sleep 3
+		loading 10
 		echo "Extracting..."
 		sleep 1
 		echo "Setting up RAM..."
@@ -46,7 +63,7 @@ function enable_shell_rtx () {
 		echo "Enabling ray-traced shell..."
 		sleep 1
 		echo "Downloading RTX drivers..."
-		sleep 2
+		loading 10
 		echo "Extracting files..."
 		sleep 3
 		echo "Checking compatibility..."
@@ -84,7 +101,7 @@ function increase_resolution () {
 	echo "Calculating rasterization matrix..."
 	sleep 0.2
 	echo "Downloading pixels from https://amaz0n.com..."
-	sleep 3
+	loading 10
 	echo "Resizing screen..."
 	sleep 1
 	echo "Setting up new resolution..."
@@ -122,7 +139,7 @@ function add_cores () {
 	echo "Defaulting to core download"
 	sleep 0.5
 	echo "Downloading cores from https://corehub.com..."
-	sleep 3
+	loading 10
 	echo "Unpacking core archive..."
 	sleep 2
 	echo "Setting up virtual machine..."
