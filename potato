@@ -19,10 +19,20 @@ function char_n () {
 	done
 }
 
+function random () {
+	zero_one=$(echo "scale=20;$RANDOM/32767" | bc)
+	range=$(echo "scale=20;$2-$1" | bc)
+	echo $(echo "scale=20;$1+$zero_one*$range" | bc)
+}
+
+function rsleep () {
+	sleep $(random $1 $2)
+}
+
 function loading () {
 	echo -n $(char_n $1 "▯")
 	for i in $(seq 1 $1); do
-		sleep 0.5
+		rsleep 0.2 0.5
 		echo -ne "\r"
 		echo -n $(char_n $i "▮")
 		echo -n $(char_n $(($1 - $i)) "▯")
@@ -32,62 +42,62 @@ function loading () {
 
 function add_ram () {
 		echo "Choosing best RAM file format..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Defaulting to .mp4 (most popular)"
-		sleep 0.5
+		rsleep 0.25 0.75
 		echo "Retrieving RAM providers list..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Choosing best provider..."
-		sleep 0.5
+		rsleep 0.25 0.75
 		echo "Defaulting to https://freeram.ru"
-		sleep 0.2
+		rsleep 0.1 0.3
 		echo "Downloading RAM.mp4..."
-		loading 10
+		loading 25
 		echo "Extracting..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Setting up RAM..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Creating /dev/ram0..."
-		sleep 0.5
+		rsleep 0.25 0.75
 		echo "Linking properties..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Registering new kernel modules..."
-		sleep 2
+		rsleep 1.5 2.5
 		echo "Cleaning up..."
-		sleep 0.5
+		rsleep 0.25 0.75
 		echo -e "\nRAM successfully added !"
 		echo "+$1Gb of RAM"
 }
 
 function enable_shell_rtx () {
 		echo "Enabling ray-traced shell..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Downloading RTX drivers..."
-		loading 10
+		loading 25
 		echo "Extracting files..."
-		sleep 3
+		loading 25
 		echo "Checking compatibility..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Computing checksum..."
-		sleep 2
+		rsleep 1.75 2.25
 		echo "Checksum is valid"
-		sleep 0.2
+		rsleep 0.1 0.3
 		echo "Running pre-install scripts..."
-		sleep 2
+		rsleep 1.75 2.25
 		echo "Installing..."
-		sleep 3
+		loading 25
 		echo "Compiling dependencies..."
-		sleep 2
+		rsleep 1.75 2.25
 		echo "Linking files..."
-		sleep 0.5
+		rsleep 0.25 0.75
 		echo "Running post-install scripts..."
-		sleep 2
+		rsleep 1.75 2.25
 		echo "Running post-post-install scripts..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo "Configuring external metadata..."
-		sleep 0.5
+		rsleep 0.25 0.75
 		echo "Enabling..."
-		sleep 1
+		rsleep 0.75 1.25
 		echo -e "\nRTX shell successfully enabled !"
 		echo "Note: this feature requires a dedicated GPU"
 		echo "Note: you can install one by running 'potato add-gpu'"
@@ -95,27 +105,27 @@ function enable_shell_rtx () {
 
 function increase_resolution () {
 	echo "Checking screen compatibility..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo "Selecting screen reference..."
-	sleep 0.5
+	rsleep 0.75 1.25
 	echo "Calculating rasterization matrix..."
-	sleep 0.2
+	rsleep 0.1 0.3
 	echo "Downloading pixels from https://amaz0n.com..."
-	loading 10
+	loading 25
 	echo "Resizing screen..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo "Setting up new resolution..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo "Adding colors..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo "Calibrating..."
-	sleep 2
+	rsleep 1.75 2.25
 	echo "Removing useless pixels..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo "Clearing standard output..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo "Deleting old resolution..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo -e "\nResolution successfully increased !"
 	echo "Note: this feature requires a lot of RAM"
 	echo "Note: you can install more by running 'potato add-ram <size>'"
@@ -124,40 +134,40 @@ function increase_resolution () {
 function add_cores () {
 	num_cores=$(nproc --all)
 	echo "Retrieving CPU infos..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo "CPU core count: $num_cores"
 	echo "Target core count: $((num_cores * 2))"
-	sleep 1
+	rsleep 0.75 1.25
 	echo "Searching for new cores..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo "Searching in /lost+found..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo "Searching in /dev/null..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo "No new cores found"
 	sleep 1
 	echo "Defaulting to core download"
-	sleep 0.5
+	rsleep 0.5
 	echo "Downloading cores from https://corehub.com..."
-	loading 10
+	loading 25
 	echo "Unpacking core archive..."
-	sleep 2
+	rsleep 1.75 2.25
 	echo "Setting up virtual machine..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo "Installing cores..."
-	sleep 2
+	rsleep 1.75 2.25
 	echo "Converting virtual machine to real machine..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo "Setting up space on motherboard..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo "Removed unused PCIe interfaces"
-	sleep 0.2
+	rsleep 0.1 0.3
 	echo "Connecting wires..."
-	sleep 1
+	rsleep 0.75 1.25
 	echo "Modifying BIOS configuration..."
-	sleep 3
+	rsleep 2.5 3.5
 	echo "Initializing L1 cache..."
-	sleep 0.5
+	rsleep 0.25 0.75
 	echo -e "\nCores successfully added !"
 	echo "+$((num_cores)) cores"
 }
