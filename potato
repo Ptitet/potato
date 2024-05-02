@@ -194,4 +194,7 @@ case $1 in
 	"add-cores")
 		add_cores
 		;;
+	*)
+		echo "This feature is not implemented yet"
+		;;
 esac
