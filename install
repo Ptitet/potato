@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -euo pipefail
+
 function is_root () {
     [ $(id -u) -ne 0 ]; echo $?
 }

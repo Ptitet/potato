@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -euo pipefail
+
 function print_help () {
 	echo "Potato laptop booster"
 	echo "Commands:"
